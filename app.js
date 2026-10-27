@@ -678,7 +678,7 @@
     }
 
     if (langBtn) {
-      langBtn.textContent = lang === "en" ? "中文" : "EN";
+      langBtn.textContent = lang === "bi" ? "EN" : (lang === "en" ? "中文" : "对照");
       langBtn.setAttribute("aria-label",
         lang === "en" ? "Switch to Chinese (中文)" : "Switch to English");
     }
