@@ -20,6 +20,13 @@
   --gutter: clamp(20px, 4.2vw, 40px);
   --sec-y: clamp(30px, 3.8vw, 56px);
   --radius: 18px;
+  /* 分节标题字阶（2026-10-28 由原 27/24px 基线整体放大）
+     主标题＝原 clamp(27px,3.15vw,42px) 的 2 倍；无编号小节＝原 24px 的约 2.1 倍；
+     面板内标题取主标题的 .8，避免窄栏三行。 */
+  --h2: clamp(40px, 6.3vw, 84px);
+  --h2-panel: clamp(32px, 5.04vw, 67px);
+  --h2-minor: clamp(30px, 3.78vw, 50px);
+  --eyebrow: 16.5px;
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
           "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
           "Noto Sans CJK SC", sans-serif;
@@ -94,10 +101,20 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
 }
 .head-in {
   display: flex; align-items: center; gap: 28px;
-  height: 68px;
+  height: 76px;
 }
-.brand { display: inline-flex; align-items: center; flex: none; }
-.brand img { height: 24px; width: auto; display: block; }
+/* 首屏第一行：横版 LOGO（原 24px → 48px，2.0×）+ 中文名「逐句」 */
+.brand { display: inline-flex; align-items: center; gap: 13px; flex: none; }
+.brand img { height: 48px; width: auto; display: block; }
+.brand-cn {
+  font-size: 21px;            /* ≈ 字标字高 24px 的 0.875 */
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1;
+  color: var(--magenta);
+  transform: translateY(-1px); /* 字标基线偏高，微调至视觉中轴 */
+  white-space: nowrap;
+}
 .nav {
   display: flex; align-items: center; gap: 26px;
   margin-left: auto;
@@ -257,18 +274,25 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
 
 /* ── 截图 ─────────────────────────────────────────────── */
 .shot { margin: clamp(42px, 6vw, 82px) 0 0; }
+/* 三张界面图统一：12px 圆角 + 1px 描边 + 轻投影（2026-10-28） */
 .shot-frame {
   padding: 1px;
-  border-radius: 20px;
+  border-radius: 13px;
   background: linear-gradient(158deg,
-    rgba(86, 188, 244, .5) 0%,
-    rgba(229, 78, 172, .22) 34%,
-    rgba(230, 237, 244, .07) 72%);
-  box-shadow: 0 42px 120px rgba(0, 0, 0, .55);
+    rgba(86, 188, 244, .38) 0%,
+    rgba(229, 78, 172, .18) 36%,
+    rgba(230, 237, 244, .07) 74%);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .45);
 }
 .shot-frame img {
   display: block; width: 100%; height: auto;
-  border-radius: 19px;
+  border-radius: 12px;
+}
+.dlg-shot {
+  display: block; width: 100%; height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .32);
 }
 .shot-cap {
   display: flex; justify-content: space-between; gap: 20px;
@@ -307,17 +331,51 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
   padding: var(--sec-y) 0;
   border-top: 1px solid var(--line-soft);
 }
-.sec-head { max-width: 800px; margin-bottom: clamp(14px, 2vw, 22px); }
+/* 分节层级（2026-10-28）：主节＝全宽发丝线＋编号；能力细分＝短标记＋更紧的上边距；
+   重点块＝整幅浅色底带。三层让读者一眼分出「主 / 次 / 辅」，不靠加大留白。 */
+.section--minor {
+  border-top: 0;
+  padding-top: clamp(18px, 2.2vw, 30px);
+}
+.section--minor > .wrap::before {
+  content: "";
+  display: block;
+  width: 44px; height: 1px;
+  margin-bottom: clamp(13px, 1.7vw, 19px);
+  background: linear-gradient(90deg, rgba(86, 188, 244, .55), rgba(229, 78, 172, .2));
+}
+.section--band {
+  border-top: 1px solid rgba(86, 188, 244, .15);
+  border-bottom: 1px solid rgba(230, 237, 244, .05);
+  background:
+    radial-gradient(80% 120% at 12% 0%, rgba(86, 188, 244, .05), transparent 62%),
+    linear-gradient(180deg, #0e141c, #0b1017);
+}
+/* 标题放大后行宽同步加宽（原 800px），使 13 字长标题在桌面不超过两行 */
+.sec-head { max-width: min(1100px, 100%); margin-bottom: clamp(14px, 2vw, 22px); }
 .sec-head h2,
 .spot-lead h2,
 .dl-copy h2 {
-  font-size: clamp(27px, 3.15vw, 42px);
-  line-height: 1.2;
+  font-size: var(--h2);
+  line-height: 1.14;
   font-weight: 600;
-  letter-spacing: -.022em;
+  letter-spacing: -.028em;
   margin: 0 0 14px;
   text-wrap: pretty;
 }
+/* 无编号小节标题（引擎 / 复读三档 / 查词 / 语言包 / 价格）：原 UA 默认 24px */
+.section > .wrap > h2 {
+  font-size: var(--h2-minor);
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -.022em;
+  margin: 0 0 12px;
+  text-wrap: pretty;
+}
+/* 编号眉标随标题放大 1.5×（11 → 16.5），保持引导标签层级，不与主标题争夺重心 */
+.sec-head .eyebrow,
+.spot-lead .eyebrow,
+.dl-copy .eyebrow { font-size: var(--eyebrow); letter-spacing: .16em; margin-bottom: 14px; }
 .sec-sub {
   max-width: 64ch;
   font-size: clamp(14.5px, 1.35vw, 16px);
@@ -434,8 +492,8 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
   overflow: hidden;
 }
 .spot-lead h2 {
-  font-size: clamp(24px, 2.65vw, 37px);
-  line-height: 1.24;
+  font-size: var(--h2-panel);
+  line-height: 1.16;
   text-wrap: pretty;
 }
 .spot-sub {
@@ -542,6 +600,7 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
   background: linear-gradient(100deg, rgba(86, 188, 244, .22), rgba(229, 78, 172, .22));
   border: 1px solid rgba(86, 188, 244, .35);
 }
+.free .bi-en { color: rgba(255, 255, 255, .88); font-size: 10px; margin-top: 2px; }
 .table-note {
   margin: 14px 0 0;
   font-size: 12px; line-height: 1.65; color: var(--dim);
@@ -612,7 +671,7 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
 }
 .pipe-note p { font-size: 14px; line-height: 1.75; color: var(--muted); margin: 0; }
 .pipe-h span { display: block; }
-.keys-h span { display: inline; }
+.keys-h span { display: block; }
 html[lang="en"] .keys-h span + span { margin-left: .25em; }
 
 /* ── 数字 ─────────────────────────────────────────────── */
@@ -715,6 +774,7 @@ kbd {
 .section-dl { padding-bottom: clamp(32px, 4vw, 52px); }
 .dl-panel {
   position: relative;
+  overflow: hidden;           /* 装饰光晕（::before inset:-12%）不再越界引发横向滚动 */
   display: grid;
   grid-template-columns: minmax(0, 1.22fr) minmax(190px, .55fr);
   gap: clamp(26px, 4vw, 56px);
@@ -728,7 +788,7 @@ kbd {
     #0f151d;
   overflow: hidden;
 }
-.dl-copy h2 { margin-bottom: 12px; }
+.dl-copy h2 { font-size: var(--h2-panel); line-height: 1.16; margin-bottom: 12px; }
 .dl-sub {
   max-width: 54ch;
   font-size: 14.8px; line-height: 1.72;
@@ -820,6 +880,43 @@ html[lang="en"] .step p { max-width: 22ch; }
   html[lang="en"] .cmp thead th { font-size: 10.5px; letter-spacing: .06em; }
 }
 
+/* ── 通用栅格（原内联 grid 收口，便于窄屏折叠）───────────── */
+.g2, .g3 { display: grid; gap: 12px; margin-top: 14px; }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ── 价格与授权 ───────────────────────────────────────── */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.price-card {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 14px 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.price-plan { font-size: 13px; color: var(--muted); line-height: 1.35; text-align: center; }
+.price-plan .bi-en { font-size: 11px; margin-top: 1px; }
+.price-num {
+  font-size: 27px; font-weight: 800; letter-spacing: -.02em;
+  color: var(--txt); margin: 6px 0 11px; line-height: 1;
+}
+.price-card .btn { width: 100%; height: 34px; font-size: 12.5px; padding: 0 10px; border-radius: 9px; }
+.price-card .btn .bi-en { display: block; font-size: 10.5px; line-height: 1.1; margin: 1px 0 0; }
+.info-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px;
+}
+.info-card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px;
+}
+.info-card h3 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+.info-card p { margin: 0; color: var(--muted); font-size: 13.5px; }
+
 /* ============================================================
    响应式
    ============================================================ */
@@ -860,6 +957,22 @@ html[lang="en"] .step p { max-width: 22ch; }
 
 @media (max-width: 860px) {
   .nav { display: none; }
+  .price-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .g2, .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* 834 起对比表开始压缩：首列定宽 168px，表体在容器内横向滚动 */
+  .cmp thead th:first-child,
+  .cmp tbody th {
+    width: 168px;
+    min-width: 168px;
+    max-width: 168px;
+    padding-left: 14px;
+    padding-right: 10px;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .cmp thead th { font-size: 10.5px; padding: 14px 10px; }
+  .cmp th, .cmp td { padding: 12px 10px; }
+  .table-hint { display: block; margin: 10px 0 0; font-size: 11.5px; color: var(--dim); }
   .lang { margin-left: auto; }
   .modules { grid-template-columns: 1fr; }
   .legs { grid-template-columns: 1fr; }
@@ -888,9 +1001,18 @@ html[lang="en"] .step p { max-width: 22ch; }
 }
 
 @media (max-width: 620px) {
-  :root { --gutter: 20px; }
-  .head-in { height: 60px; gap: 16px; }
-  .brand img { height: 21px; }
+  :root {
+    --gutter: 20px;
+    /* 窄屏收敛：主标题约 1.4×（原 27px → 37px@390），避免破版 */
+    --h2: clamp(34px, 9.6vw, 44px);
+    --h2-panel: clamp(30px, 8.4vw, 36px);
+    --h2-minor: clamp(30px, 8.6vw, 34px);
+    --eyebrow: 14px;
+  }
+  .head-in { height: 64px; gap: 16px; }
+  .brand { gap: 9px; }
+  .brand img { height: 36px; }
+  .brand-cn { font-size: 15.5px; }
   .hero { padding-top: 44px; }
   .hero-h1 { font-size: clamp(34px, 9.4vw, 44px); }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -901,6 +1023,9 @@ html[lang="en"] .step p { max-width: 22ch; }
   .keys-grid { grid-template-columns: 1fr; }
   .krow { grid-template-columns: minmax(96px, auto) minmax(0, 1fr); }
   .sec-head h2, .spot-lead h2, .dl-copy h2 { letter-spacing: -.012em; }
+  /* 窄屏改用均衡断行，避免「串成一条线只有这一个窗 / 口」这类单字孤行 */
+  .sec-head h2, .spot-lead h2, .dl-copy h2,
+  .section > .wrap > h2, .hero-h1 span { text-wrap: balance; }
   .table-hint {
     display: block;
     margin: 10px 0 0;
@@ -908,24 +1033,15 @@ html[lang="en"] .step p { max-width: 22ch; }
     color: var(--dim);
   }
   .cmp { min-width: 860px; }
-  .cmp thead th:first-child,
-  .cmp tbody th {
-    width: 168px;
-    min-width: 168px;
-    max-width: 168px;
-    padding-left: 14px;
-    padding-right: 10px;
-    font-size: 12px;
-    line-height: 1.45;
-  }
-  .cmp thead th { font-size: 10px; padding: 14px 10px; }
-  .cmp th, .cmp td { padding: 12px 10px; }
   .foot-top { align-items: flex-start; }
   .foot-nav { gap: 14px 18px; }
   .foot-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
   .foot-top-link { margin-left: 0; }
   .tagline > span:last-child { text-wrap: balance; }
   .dl-panel { padding: 26px 22px; }
+  .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .g2, .g3 { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
   .dl-chips { gap: 6px; }
   .dl-chips li { padding: 4px 9px; }
   .esc-band { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -939,7 +1055,11 @@ html[lang="en"] .step p { max-width: 22ch; }
     font-size: clamp(30px, 8vw, 36px);
     max-width: none;
   }
-  html[lang="en"] .sec-head h2 { font-size: clamp(25px, 6.7vw, 32px); }
+  html[lang="en"] .sec-head h2,
+  html[lang="en"] .spot-lead h2,
+  html[lang="en"] .dl-copy h2,
+  html[lang="en"] .section > .wrap > h2 { font-size: clamp(26px, 7.2vw, 34px); line-height: 1.22; }
+  html[lang="en"] .eyebrow { font-size: 13px; letter-spacing: .14em; }
 }
 
 @media (max-width: 480px) {
@@ -961,5 +1081,31 @@ html[lang="en"] .step p { max-width: 22ch; }
 }
 
 /* 对照模式：英文副行 */
-.bi-en{display:block;font-size:.82em;line-height:1.5;color:#93a5b6;margin-top:3px;font-weight:400}
+.bi-en{display:block;font-size:max(.82em, 11px);line-height:1.5;color:#93a5b6;margin-top:3px;font-weight:400}
 button .bi-en,a .bi-en{display:inline;margin-left:.4em}
+/* 2026-10-28 打磨：
+   ① 展示级标题的英文副行改用绝对小比例，避免 0.82em×84px＝69px 抢过中文主行；
+   ② 眉标的英文副行不再全大写，与中文并列而不是重复成「03 · 核心模块 / 03 · MODULES」；
+   ③ 按钮内的英文副行跟随父色，保证渐变底上的可读性；
+   ④ 胶囊内的英文副行回到行内，避免把单行标签撑成两行、使同一排胶囊高矮不齐。 */
+.sec-head h2 .bi-en, .spot-lead h2 .bi-en, .dl-copy h2 .bi-en,
+.section > .wrap > h2 .bi-en {
+  font-size: .42em; line-height: 1.42; letter-spacing: -.005em;
+  margin-top: .16em; font-weight: 500;
+}
+.hero-h1 .bi-en { font-size: .68em; line-height: 1.3; margin-top: .1em; }
+.eyebrow .bi-en, .spot-lead .eyebrow .bi-en {
+  font-size: .78em; line-height: 1.4; letter-spacing: .05em;
+  text-transform: none; margin-top: 2px;
+}
+.btn .bi-en { color: inherit; opacity: .8; font-weight: 500; font-size: .84em; }
+/* 首屏/下载两处大按钮：中文主行 + 英文副行上下排，避免一行里中英挤在一起 */
+.cta .btn, .dl-panel .btn { height: auto; min-height: 48px; padding: 9px 22px; }
+.cta .btn .bi-en, .dl-panel .btn .bi-en { display: block; margin: 1px 0 0; font-size: 11.5px; line-height: 1.3; }
+.dl-panel .btn .bi-en { font-size: 11px; }
+.chips li .bi-en, .dl-chips li .bi-en {
+  display: inline; margin: 0 0 0 .35em; font-size: 11px; opacity: .78;
+}
+/* 导航保持单行可扫读：对照模式只留中文主行（英文由英文模式提供），
+   否则 7 个「中文+英文」标签在 1180 内容宽下必然溢出顶栏。 */
+.nav .bi-en { display: none; }

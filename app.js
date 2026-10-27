@@ -82,7 +82,7 @@
       p7_p: "当时查过、当时改对，过后没有沉淀；错过的词散落在不同文件里，没法集中复习。",
       p7_s: "错词本自动收集写错的词，按错误次数排序，记下出处句子，一键导出 Excel。",
 
-      sec2_eb: "02 · 核心模块",
+      sec2_eb: "03 · 核心模块",
       mods_h: "一个窗口里，八个模块",
       mods_sub: "从播放到交稿，每一件都在它该在的位置上。",
       m_lbl_solve: "解决什么", m_lbl_how: "怎么用",
@@ -175,7 +175,7 @@
       spot3_p: "转写结果按「文件 + 模型」缓存；同一素材再打开不重转。",
       spot_note: "识别在本机运行，音频不上传。识别引擎与多语种模型已内置在安装包里（约 160 MB），装好即用、全程离线。",
 
-      sec3_eb: "03 · 对比",
+      sec3_eb: "02 · 对比",
       eng_h: "两个真正干活的引擎：听音查字、任意 A-B",
       eng_sub: "市面上的播放器大多只管\"放\"，查词要另开词典、循环只能按秒拖。这两件事在这里是内置的。",
       eng1_t: "内置听音查字 / 拼写查字引擎",
@@ -220,6 +220,8 @@
       pr_h: "价格与授权",
       pr_sub: "先试用 1 天，觉得合用再买。一次购买可长期使用；换电脑不需要联系我们。",
       price_buy: "购买",
+      pr_p1: "7 天", pr_p2: "1 个月", pr_p3: "1 季度",
+      pr_p4: "半年", pr_p5: "1 年", pr_p6: "永久",
       pr_a_t: "怎么激活",
       pr_a_p: "付款成功后授权自动生效；如果软件里仍显示未授权，把收据邮件里的交易号粘到「我已付款，刷新状态」再点刷新；连交易号也找不到时，只填付款邮箱点「恢复购买」，系统会自动把授权绑到这台电脑。",
       pr_t_t: "换机与试用",
@@ -334,7 +336,6 @@
       dl_note: "识别在本机完成（离线运行，基于开源 whisper 模型），素材与文稿不上传。识别引擎与多语种模型已内置，装好即用，无需另外安装任何依赖。",
 
       foot_nav_label: "页脚导航",
-      foot_tag: "SentenceEcho 是 Yellowfir Group Limited 的产品。",
       foot_top: "回到顶部 ↑"
     },
 
@@ -410,7 +411,7 @@
       p7_p: "Looked up once, corrected once, then scattered across files with no way to practise them together.",
       p7_s: "The word book collects every miss automatically, ranks by error count, keeps the source sentence and exports to Excel.",
 
-      sec2_eb: "02 · Modules",
+      sec2_eb: "03 · Modules",
       mods_h: "Eight modules in one window",
       mods_sub: "From playback to a finished manuscript, each part sits where it belongs.",
       m_lbl_solve: "Solves", m_lbl_how: "How to use",
@@ -503,7 +504,7 @@
       spot3_p: "Transcriptions are cached by file and model, so opening the same media again does not re-run recognition.",
       spot_note: "Recognition runs on your Mac and audio is never uploaded. The recognition engine and multilingual model ship inside the installer (~160 MB) — works offline out of the box.",
 
-      sec3_eb: "03 · Comparison",
+      sec3_eb: "02 · Comparison",
       eng_h: "Two engines that actually do the work: lookup by sound, and arbitrary A-B",
       eng_sub: "Most players just play: word lookup means opening another dictionary, and looping means dragging by the second. Here both are built in.",
       eng1_t: "Built-in lookup by sound / by spelling",
@@ -548,6 +549,8 @@
       pr_h: "Pricing and licensing",
       pr_sub: "Try it free for a day, buy when it fits. One purchase keeps working; moving to a new Mac needs no email to us.",
       price_buy: "Buy",
+      pr_p1: "7 days", pr_p2: "1 month", pr_p3: "3 months",
+      pr_p4: "6 months", pr_p5: "1 year", pr_p6: "Lifetime",
       pr_a_t: "How activation works",
       pr_a_p: "Your licence activates automatically after payment. If the app still shows unlicensed, paste the transaction ID from your receipt into “I have paid, refresh status”. If you cannot find it, just enter the purchase email and press “Restore purchase” — the licence is rebound to this Mac.",
       pr_t_t: "Moving machines and the trial",
@@ -662,7 +665,6 @@
       dl_note: "Recognition runs locally (offline, open-source whisper model); media and manuscripts are never uploaded. Subtitle generation needs the recognition engine and English model installed locally (~160 MB).",
 
       foot_nav_label: "Footer navigation",
-      foot_tag: "SentenceEcho is a product of Yellowfir Group Limited.",
       foot_top: "Back to top ↑"
     }
   };
