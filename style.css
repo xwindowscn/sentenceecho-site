@@ -959,3 +959,7 @@ html[lang="en"] .step p { max-width: 22ch; }
     transition-duration: .001ms !important;
   }
 }
+
+/* 对照模式：英文副行 */
+.bi-en{display:block;font-size:.82em;line-height:1.5;color:#93a5b6;margin-top:3px;font-weight:400}
+button .bi-en,a .bi-en{display:inline;margin-left:.4em}

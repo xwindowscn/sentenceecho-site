@@ -620,7 +620,7 @@
 
   function readLang() {
     try {
-      return localStorage.getItem(STORAGE_KEY) === "en" ? "en" : "zh";
+      var v = localStorage.getItem(STORAGE_KEY); return (v === "en" || v === "zh" || v === "bi") ? v : "bi";
     } catch (e) {
       return "zh";
     }
@@ -638,10 +638,22 @@
     root.setAttribute("data-lang", lang);
 
     var nodes = document.querySelectorAll("[data-i18n]");
+    var bi = (lang === "bi");
     for (var i = 0; i < nodes.length; i++) {
       var key = nodes[i].getAttribute("data-i18n");
-      if (Object.prototype.hasOwnProperty.call(dict, key)) {
-        nodes[i].textContent = dict[key];
+      if (!Object.prototype.hasOwnProperty.call(dict, key)) continue;
+      if (!bi) { nodes[i].textContent = dict[key]; continue; }
+      // 对照模式：中文主行 + 英文小字副行，同屏可见
+      var zhText = I18N.zh[key] || "";
+      var enText = I18N.en[key] || "";
+      nodes[i].textContent = "";
+      nodes[i].appendChild(document.createTextNode(zhText));
+      if (enText && enText !== zhText) {
+        var sp = document.createElement("span");
+        sp.className = "bi-en";
+        sp.lang = "en";
+        sp.textContent = enText;
+        nodes[i].appendChild(sp);
       }
     }
 
@@ -681,7 +693,8 @@
 
   if (langBtn) {
     langBtn.addEventListener("click", function () {
-      lang = lang === "en" ? "zh" : "en";
+      // 三态轮换：对照 → 英文 → 中文 → 对照
+      lang = lang === "bi" ? "en" : (lang === "en" ? "zh" : "bi");
       apply(lang);
     });
   }
