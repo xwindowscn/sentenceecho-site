@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SentenceEcho 逐句 — 最强大的复读、学习、播放软件（macOS）</title>
+<meta name="description" content="SentenceEcho（逐句）是 macOS 英语听写软件：按句复读、Word 式 .docx 文稿、跟随校验、音标查字、本地生成英文字幕、硬字幕处理与错词本，全部在同一个窗口，本地运行。">
+<link rel="canonical" href="https://www.sentenceecho.com/">
+<meta name="theme-color" content="#0b0f14">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.sentenceecho.com/">
+<meta property="og:title" content="SentenceEcho 逐句 — 最强大的复读、学习、播放软件">
+<meta property="og:description" content="播放器、Word 式文稿、跟随校验、音标查字、本地生成字幕与错词本，在同一个窗口里完成一次听写。">
+<meta property="og:image" content="https://www.sentenceecho.com/assets/app-zh.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/sentenceecho-icon-vivid-256.png">
+<link rel="stylesheet" href="style.css">
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add("js");
+  try {
+    if (localStorage.getItem("sentenceecho-lang") === "en") {
+      root.lang = "en";
+      root.setAttribute("data-lang", "en");
+      root.classList.add("i18n-pending");
+      setTimeout(function () { root.classList.remove("i18n-pending"); }, 1200);
+    }
+  } catch (e) { /* localStorage unavailable: stay zh */ }
+})();
+</script>
+</head>
+<body id="top">
+<a class="skip" href="#main" data-i18n="skip">跳到正文</a>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top" aria-label="SentenceEcho">
+      <img src="assets/sentenceecho-lockup-vivid-512.png" alt="SentenceEcho" width="512" height="92">
+    </a>
+    <nav class="nav" aria-label="主导航" data-i18n-aria="nav_label">
+      <a href="#pains" data-i18n="nav_pains">痛点</a>
+      <a href="#modules" data-i18n="nav_modules">模块</a>
+      <a href="#compare" data-i18n="nav_compare">对比</a>
+      <a href="#pipeline" data-i18n="nav_pipeline">流水线</a>
+      <a href="#keys" data-i18n="nav_keys">快捷键</a>
+      <a href="#download" data-i18n="nav_download">下载</a>
+    </nav>
+    <button class="lang" id="langbtn" type="button" aria-label="Switch to English">EN</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="hero_eb">macOS 英语听写 · 本地运行</span></p>
+          <h1 class="hero-h1">
+            <span class="h1-l1" data-i18n="hero_h1_1">把听到的英语，</span>
+            <span class="h1-l2 grad" data-i18n="hero_h1_2">一句一句写下来。</span>
+          </h1>
+          <p class="tagline"><span class="tag-line" aria-hidden="true"></span><span data-i18n="hero_tag">最强大的复读、学习、播放软件</span></p>
+          <p class="lead" data-i18n="hero_lead">播放器、Word 式文稿、逐句校验、音标查字，都在同一个窗口。听到一句就写一句：写对了自动往下走，写错了就停在这句反复听。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#download">
+              <svg class="ico" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+              <span data-i18n="cta_dl">下载 macOS 版</span>
+            </a>
+            <a class="btn btn-ghost" href="#pipeline">
+              <span data-i18n="cta_how">看它怎么工作</span>
+              <svg class="ico" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <p class="hero-meta" data-i18n="hero_meta">免费 · macOS 13+ · Apple 芯片 · 素材不出本机</p>
+        </div>
+
+        <aside class="facts" aria-label="产品要点" data-i18n-aria="facts_label">
+          <div class="fact"><span class="fact-k" data-i18n="fact1_k">播放</span><span class="fact-v" data-i18n="fact1_v">通用播放器 · 格式尽量广</span></div>
+          <div class="fact"><span class="fact-k" data-i18n="fact2_k">复读</span><span class="fact-v" data-i18n="fact2_v">按句，不按秒</span></div>
+          <div class="fact"><span class="fact-k" data-i18n="fact3_k">文稿</span><span class="fact-v" data-i18n="fact3_v">真 .docx · Word 可打开</span></div>
+          <div class="fact"><span class="fact-k" data-i18n="fact4_k">查字</span><span class="fact-v" data-i18n="fact4_v">20 万词 · 统一英式音标</span></div>
+          <div class="fact"><span class="fact-k" data-i18n="fact5_k">运行</span><span class="fact-v" data-i18n="fact5_v">本地 · 素材不出本机</span></div>
+          <div class="fact"><span class="fact-k" data-i18n="fact6_k">价格</span><span class="fact-v" data-i18n="fact6_v">免费</span></div>
+        </aside>
+      </div>
+
+      <figure class="shot reveal">
+        <div class="shot-frame">
+          <img id="shotimg" src="assets/app-zh.png" alt="SentenceEcho 主界面：上方播放与字幕，下方 Word 式文稿" width="2880" height="1608" fetchpriority="high" decoding="async">
+        </div>
+        <figcaption class="shot-cap">
+          <span data-i18n="shot_cap_l">同一窗口：播放、字幕、Word 式文稿；左侧两棵独立文件树</span>
+          <span class="shot-cap-r" data-i18n="shot_cap_r">SentenceEcho · macOS</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ── 三条腿 ─────────────────────────────────────────── -->
+  <section class="legs-band" aria-label="播放、复读、学习" data-i18n-aria="legs_label">
+    <div class="wrap legs">
+      <div class="leg reveal">
+        <p class="leg-k"><span class="leg-num" aria-hidden="true">01</span><span data-i18n="leg1_k">播放</span></p>
+        <h3 data-i18n="leg1_h">也是一个通用播放器</h3>
+        <p data-i18n="leg1_p">本地 mpv 内核，常见视频与音频格式尽量广。字幕、变速、音量、全屏、上下或左右布局——日常看片听音，打开就用。</p>
+      </div>
+      <div class="leg reveal">
+        <p class="leg-k"><span class="leg-num" aria-hidden="true">02</span><span data-i18n="leg2_k">复读</span></p>
+        <h3 data-i18n="leg2_h">复读按句，不按秒</h3>
+        <p data-i18n="leg2_p">单句循环、重复 N 次自动前进、A–B 区间、跟读留白。⇧← / ⇧→ 按句跳，不再拖进度条对起点终点。</p>
+      </div>
+      <div class="leg reveal">
+        <p class="leg-k"><span class="leg-num" aria-hidden="true">03</span><span data-i18n="leg3_k">学习</span></p>
+        <h3 data-i18n="leg3_h">听写在同一个窗口完成</h3>
+        <p data-i18n="leg3_p">Word 式 .docx 文稿、跟随校验、按音查字、错词本，从第一句到交稿不换应用。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 01 痛点 ────────────────────────────────────────── -->
+  <section class="section" id="pains">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec1_eb">01 · 痛点</span></p>
+        <h2 data-i18n="pains_h">听了很久，为什么还是听不懂</h2>
+        <p class="sec-sub" data-i18n="pains_sub">七个卡点，每一个都不是「再多听一点」能解决的。</p>
+      </div>
+
+      <ol class="pains">
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">01</span>
+          <div class="p-text">
+            <h3 data-i18n="p1_t">听懂一点就切走，一年下来还停在「泛听」</h3>
+            <p data-i18n="p1_p">看剧、刷播客，注意力跟着情节走；声音进过耳朵，却没有一句被你写下来。没有落笔，就没有真正的理解。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p1_s">一句一段，强制落笔。先按句复读，再把听到的写下来——写不出来，就是这一句还没听懂。</p>
+          </div>
+        </li>
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">02</span>
+          <div class="p-text">
+            <h3 data-i18n="p2_t">一句话要拖五六次进度条</h3>
+            <p data-i18n="p2_p">市面播放器的循环是「按时间」的 A–B：起点早一点、终点晚一点，一句要手动对齐五六次，还常常吞掉开头。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p2_s">复读按句子走：单句循环、重复 N 次后自动前进、A–B 标段、跟读留白。⇧← / ⇧→ 直接跳句，不用再和进度条较劲。</p>
+          </div>
+        </li>
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">03</span>
+          <div class="p-text">
+            <h3 data-i18n="p3_t">听写要开三个软件</h3>
+            <p data-i18n="p3_p">播放器放音、Word 写稿、词典查词。每查一个词就切一次窗口，注意力断了，刚才那句的语流也接不上了。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p3_s">一个窗口：播放区、字幕条、Word 式文稿上下（或左右）相接，查字在同一个界面浮出，光标不离开文稿。</p>
+          </div>
+        </li>
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">04</span>
+          <div class="p-text">
+            <h3 data-i18n="p4_t">音认识，字不认，字典按拼写根本查不到</h3>
+            <p data-i18n="p4_p">你听得清 /bɜːd/，却拼不出 bird。字典按拼写查，拼不出来就查不到——越查不到，越不敢写。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p4_s">按音查字：敲音标 b3rd 得到 bird，敲 reinbou 得到 rainbow。20 万词，统一英式音标，回车插入。</p>
+          </div>
+        </li>
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">05</span>
+          <div class="p-text">
+            <h3 data-i18n="p5_t">写完不知道对不对</h3>
+            <p data-i18n="p5_p">交上去没人改，自己也不确定；错了的地方没有标记，下次还会错在同一个词上。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p5_s">一键校验：对→自动进下一句；错→停住并循环这一句，直到你改对；实在过不去可以跳过，错词自动进错词本。</p>
+          </div>
+        </li>
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">06</span>
+          <div class="p-text">
+            <h3 data-i18n="p6_t">硬字幕挡不住，看着看着变成「读字幕」</h3>
+            <p data-i18n="p6_p">字幕烧在画面里，视线自然往下掉；以为在练听力，其实在做阅读理解。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p6_s">听写时字幕自动隐藏；需要干净素材就处理硬字幕：遮罩、裁剪、快速涂抹、逐帧去字幕，生成新文件，原片一键恢复。</p>
+          </div>
+        </li>
+        <li class="pain reveal">
+          <span class="p-num" aria-hidden="true">07</span>
+          <div class="p-text">
+            <h3 data-i18n="p7_t">学完的词记不住，错词没有沉淀</h3>
+            <p data-i18n="p7_p">当时查过、当时改对，过后没有沉淀；错过的词散落在不同文件里，没法集中复习。</p>
+          </div>
+          <div class="p-solve">
+            <span class="p-label">SentenceEcho</span>
+            <p data-i18n="p7_s">错词本自动收集写错的词，按错误次数排序，记下出处句子，一键导出 Excel。</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── 02 核心模块 ────────────────────────────────────── -->
+  <section class="section" id="modules">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec2_eb">02 · 核心模块</span></p>
+        <h2 data-i18n="mods_h">一个窗口里，八个模块</h2>
+        <p class="sec-sub" data-i18n="mods_sub">从播放到交稿，每一件都在它该在的位置上。</p>
+      </div>
+
+      <div class="modules">
+        <article class="module reveal" style="--i:0">
+          <div class="m-head">
+            <span class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg></span>
+            <span class="m-num">01</span>
+          </div>
+          <h3 data-i18n="m1_t">播放器</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m1_solve">日常看视频、听音频也要顺手，不能只有学习时才打开。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m1_how">⌘O 打开本地视频或音频；字幕自动找；⌘↑ / ⌘↓ 变速，⌥⌘L 换布局，⌃⌘F 全屏。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m1_c1">本地 mpv 内核</li>
+            <li data-i18n="m1_c2">视频 mp4 / mkv / mov / m4v / webm / avi 等</li>
+            <li data-i18n="m1_c3">音频 mp3 / m4a / wav / flac / aac / ogg 等</li>
+            <li data-i18n="m1_c4">字幕 srt / ass / vtt，外挂或内嵌</li>
+            <li data-i18n="m1_c5">0.5×–2.0× 不变调</li>
+            <li data-i18n="m1_c6">上下 / 左右布局；纯音频无画面</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:1">
+          <div class="m-head">
+            <span class="m-ico mag" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></span>
+            <span class="m-num">02</span>
+          </div>
+          <h3 data-i18n="m2_t">复读引擎</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m2_solve">手动拖进度条对不齐，循环按时间不按句。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m2_how">⇧R 单句循环；N 设重复次数，播 N 遍自动下一句；A / B 标段；G 留跟读间隔；⇧← / ⇧→ 按句跳。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m2_c1">按句，不按秒</li>
+            <li data-i18n="m2_c2">单句循环</li>
+            <li data-i18n="m2_c3">重复 N 次自动前进</li>
+            <li data-i18n="m2_c4">A–B 区间</li>
+            <li data-i18n="m2_c5">跟读留白</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:0">
+          <div class="m-head">
+            <span class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg></span>
+            <span class="m-num">03</span>
+          </div>
+          <h3 data-i18n="m3_t">文稿区</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m3_solve">听写要另开 Word，切窗口、复制粘贴、再排版。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m3_how">在播放区下方直接写；⌘S 存成 .docx；同名文稿下次自动带出，草稿自动保存。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m3_c1">真 .docx 读写</li>
+            <li data-i18n="m3_c2">字体 · 字号 · 颜色 · 高亮</li>
+            <li data-i18n="m3_c3">对齐 · 列表 · 行距</li>
+            <li data-i18n="m3_c4">一句一段</li>
+            <li data-i18n="m3_c5">自动草稿</li>
+            <li data-i18n="m3_c6">同名文稿配对</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:1">
+          <div class="m-head">
+            <span class="m-ico mag" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
+            <span class="m-num">04</span>
+          </div>
+          <h3 data-i18n="m4_t">跟随校验</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m4_solve">写完不知道对错，错了也没人逼你改。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m4_how">⌘D 进入听写（字幕隐藏，光标落回文稿）；⌘↩ 校验：对→下一句，错→停住重播；⌥⌘↩ 跳过。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m4_c1">三级判定</li>
+            <li data-i18n="m4_c2">对 → 自动前进</li>
+            <li data-i18n="m4_c3">错 → 卡住并重播</li>
+            <li data-i18n="m4_c4">可跳过</li>
+            <li data-i18n="m4_c5">连错 3 次自动降速</li>
+            <li data-i18n="m4_c6">错词进错词本</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:0">
+          <div class="m-head">
+            <span class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="7"/><path d="M20 20l-4.2-4.2"/><path d="M8 9v3.5"/><path d="M10.5 7.5v6"/><path d="M13 9v3.5"/></svg></span>
+            <span class="m-num">05</span>
+          </div>
+          <h3 data-i18n="m5_t">音标拼写查字</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m5_solve">认识音、不认字，字典按拼写查不到。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m5_how">⌥&gt; 唤出查字；音素键盘点选，或直接打 b3rd、reinbou 这样的音标与听感拼写。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m5_c1">20 万词</li>
+            <li data-i18n="m5_c2">统一英式音标</li>
+            <li data-i18n="m5_c3">音素键盘 + ASCII 别名</li>
+            <li data-i18n="m5_c4">拼写模糊匹配</li>
+            <li data-i18n="m5_c5">一行结果，回车插入</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:1">
+          <div class="m-head">
+            <span class="m-ico mag" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10 10 0 0112 20c-7 0-11-8-11-8a18.5 18.5 0 015.1-5.9"/><path d="M9.9 4.2A9 9 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.2 3.2"/><path d="M14.1 14.1a3 3 0 11-4.2-4.2"/><path d="M1 1l22 22"/></svg></span>
+            <span class="m-num">06</span>
+          </div>
+          <h3 data-i18n="m6_t">硬字幕处理</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m6_solve">字幕烧死在画面里，看着看着就变成读字幕。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m6_how">⌥⌘S 遮罩，高度 5%–60%（按画面实际区域算，黑边不影响）；⌘/ 逐帧去字幕（较慢、无糊边），⌥⌘/ 裁剪（更快）；都生成新文件，不动原片。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m6_c1">遮罩（按画面区域）</li>
+            <li data-i18n="m6_c2">裁剪（更快）</li>
+            <li data-i18n="m6_c3">快速涂抹</li>
+            <li data-i18n="m6_c4">逐帧去字幕</li>
+            <li data-i18n="m6_c5">高度 5%–60%</li>
+            <li data-i18n="m6_c6">生成新文件</li>
+            <li data-i18n="m6_c7">一键恢复原片</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:0">
+          <div class="m-head">
+            <span class="m-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z"/><path d="M9 8h6"/></svg></span>
+            <span class="m-num">07</span>
+          </div>
+          <h3 data-i18n="m7_t">错词本</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m7_solve">学完的词记不住，错词散在各处没有沉淀。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m7_how">⌥&lt; 打开错词本；校验时自动收集，按错误次数排序，一键导出 .xlsx。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m7_c1">自动收集</li>
+            <li data-i18n="m7_c2">按错误次数排序</li>
+            <li data-i18n="m7_c3">保留出处句子</li>
+            <li data-i18n="m7_c4">导出 Excel</li>
+            <li data-i18n="m7_c5">可清空</li>
+          </ul>
+        </article>
+
+        <article class="module reveal" style="--i:1">
+          <div class="m-head">
+            <span class="m-ico mag" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01"/><path d="M7 14h10"/></svg></span>
+            <span class="m-num">08</span>
+          </div>
+          <h3 data-i18n="m8_t">全局键盘</h3>
+          <dl class="m-body">
+            <div><dt data-i18n="m_lbl_solve">解决什么</dt><dd data-i18n="m8_solve">鼠标一动，注意力就离开刚才那句。</dd></div>
+            <div><dt data-i18n="m_lbl_how">怎么用</dt><dd data-i18n="m8_how">每个动作都有键位，顶部快捷条也能点；听写时单键让位给打字，⌘ / ⌥ 组合始终可用。</dd></div>
+          </dl>
+          <ul class="chips">
+            <li data-i18n="m8_c1">两套绑定</li>
+            <li data-i18n="m8_c2">快捷条可点</li>
+            <li data-i18n="m8_c3">单键让位给打字</li>
+            <li data-i18n="m8_c4">⌘ 组合始终可用</li>
+            <li data-i18n="m8_c5">全部可改键</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 无字幕：本地生成 ───────────────────────────────── -->
+  <section class="section spotlight" id="subtitles">
+    <div class="wrap">
+      <div class="spot reveal">
+        <div class="spot-lead">
+          <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="spot_eb">无字幕 · 本地生成</span></p>
+          <h2 data-i18n="spot_h">没有字幕，也能直接开始</h2>
+          <p class="spot-sub" data-i18n="spot_sub">英文素材没有 .srt？不用到处找字幕。本地识别先把声音切成句子，转完就进复读与听写。</p>
+        </div>
+        <ul class="spot-list">
+          <li>
+            <h3 data-i18n="spot1_t">本地出字幕</h3>
+            <p data-i18n="spot1_p">没有字幕轨时，本地 whisper.cpp 自动识别成句，不用再去下载 .srt。</p>
+          </li>
+          <li>
+            <h3 data-i18n="spot2_t">转完即听写</h3>
+            <p data-i18n="spot2_p">生成的句子表直接可用：按句循环、按句跳、逐句校验，不需要二次导入。</p>
+          </li>
+          <li>
+            <h3 data-i18n="spot3_t">再开秒出</h3>
+            <p data-i18n="spot3_p">转写结果按「文件 + 模型」缓存；同一素材再打开不重转。</p>
+          </li>
+        </ul>
+        <p class="spot-note" data-i18n="spot_note">识别在本机运行，音频不上传。识别引擎与多语种模型已内置在安装包里（约 160 MB），装好即用、全程离线。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 对比 ────────────────────────────────────────── -->
+  <section class="section" id="compare">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec3_eb">03 · 对比</span></p>
+        <h2 data-i18n="cmp_h">和现有工具比，差在哪一列</h2>
+        <p class="sec-sub" data-i18n="cmp_sub">按品类归纳，不针对具体产品。功能有无只是表象；能不能连成一条线，才是差别。</p>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="cmp">
+          <caption class="sr-only" data-i18n="cmp_caption">SentenceEcho 与同类工具的功能对照</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="cmp-corner"><span data-i18n="cmp_cap">能力</span></th>
+              <th scope="col" class="is-us"><span data-i18n="cmp_us">SentenceEcho</span></th>
+              <th scope="col" data-i18n="cmp_c1">通用播放器</th>
+              <th scope="col" data-i18n="cmp_c2">泛听 · 课程 App</th>
+              <th scope="col" data-i18n="cmp_c3">精听 · 听写工具</th>
+              <th scope="col" data-i18n="cmp_c4">词典 · 发音工具</th>
+              <th scope="col" data-i18n="cmp_c5">转录工具</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" data-i18n="cmp_r1">句级复读（按句不按秒）</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r2">重复 N 次后自动前进</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r3">跟读留白</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r4">同窗 Word 式 .docx 文稿</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r5">跟随校验与错句回环</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r6">按音（音标）查字</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r7">硬字幕处理</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r8">本地自动生成英文字幕</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r9">生成字幕后直接进入听写</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r10">本地离线</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r11">素材自由度</th>
+              <td class="is-us yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="part"><span class="v" data-i18n="v_partial">部分</span></td>
+              <td class="no"><span class="v" role="img" aria-label="不提供" data-i18n-aria="v_no">—</span></td>
+              <td class="yes"><span class="v" role="img" aria-label="支持" data-i18n-aria="v_yes">✓</span></td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="cmp_r12">价格</th>
+              <td class="is-us"><span class="v free" data-i18n="v_free">免费</span></td>
+              <td class="no"><span class="v" role="img" aria-label="未核实" data-i18n-aria="v_na">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="未核实" data-i18n-aria="v_na">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="未核实" data-i18n-aria="v_na">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="未核实" data-i18n-aria="v_na">—</span></td>
+              <td class="no"><span class="v" role="img" aria-label="未核实" data-i18n-aria="v_na">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-hint" data-i18n="cmp_hint">← 左右滑动查看完整表格 →</p>
+      <p class="table-note" data-i18n="cmp_note">※ 品类归纳，非逐家评测。「部分」表示该品类中常见但不普遍，「—」表示通常不提供，不代表不存在例外。竞品价格与版本未逐家核实，故留空。本产品的本地字幕生成需另装识别引擎与英文模型。</p>
+    </div>
+  </section>
+
+  <!-- ── 04 一条流水线 ──────────────────────────────────── -->
+  <section class="section" id="pipeline">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec4_eb">04 · 独一无二的整合</span></p>
+        <h2 class="pipe-h"><span data-i18n="pipe_h_a">单点各有工具，</span><span data-i18n="pipe_h_b">串成一条线只有这一个窗口</span></h2>
+        <p class="sec-sub" data-i18n="pipe_sub">听写的七步，不换应用、不复制粘贴、不重排格式。</p>
+      </div>
+
+      <div class="pipeline reveal">
+        <div class="pipe-badge"><span class="pipe-dot" aria-hidden="true"></span><span data-i18n="pipe_badge">同一条听写流水线</span></div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3 data-i18n="ps1_t">打开素材</h3>
+            <p data-i18n="ps1_d">视频、音频、字幕三支路；没字幕就本地生成</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3 data-i18n="ps2_t">按句复读</h3>
+            <p data-i18n="ps2_d">单句循环、N 次、跟读留白</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3 data-i18n="ps3_t">边听边写</h3>
+            <p data-i18n="ps3_d">Word 式文稿就在下方</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">4</span>
+            <h3 data-i18n="ps4_t">校验回环</h3>
+            <p data-i18n="ps4_d">对了前进，错了停住重播</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">5</span>
+            <h3 data-i18n="ps5_t">按音查字</h3>
+            <p data-i18n="ps5_d">卡住的词当场反查</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">6</span>
+            <h3 data-i18n="ps6_t">保存 .docx</h3>
+            <p data-i18n="ps6_d">真文档，格式不丢</p>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">7</span>
+            <h3 data-i18n="ps7_t">错词沉淀</h3>
+            <p data-i18n="ps7_d">自动进错词本，可按次数排序</p>
+          </li>
+        </ol>
+        <p class="pipe-foot">
+          <span data-i18n="pipe_b1">全程一个窗口</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="pipe_b2">素材不出本机</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span data-i18n="pipe_b3">手不离键盘</span>
+        </p>
+      </div>
+
+      <div class="pipe-note reveal">
+        <p data-i18n="pipe_note">播放器能播不能教，课程 App 能听不能写，听写工具让你另开 Word，词典按拼写查，转录工具只给字幕。把这几件事按听写的顺序排进同一个窗口的，我们只见过这一个。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 05 便利性 ──────────────────────────────────────── -->
+  <section class="section" id="convenience">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec5_eb">05 · 学习便利性</span></p>
+        <h2 data-i18n="stats_h">少切换、少操作、少打断</h2>
+        <p class="sec-sub" data-i18n="stats_sub">把「方便」写成可以数的次数，而不是形容词。</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat reveal">
+          <p class="stat-num"><span>100+</span><span class="arr" aria-hidden="true">→</span><span class="hl">0</span></p>
+          <p class="stat-label" data-i18n="st1_label">一次听写里切换应用的次数</p>
+          <p class="stat-note" data-i18n="st1_note">口径：10 分钟素材、约 40 句，原本在播放器、Word、词典之间来回切。</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-num"><span>5–6</span><span class="arr" aria-hidden="true">→</span><span class="hl">1</span></p>
+          <p class="stat-label" data-i18n="st2_label">复读同一句的操作次数</p>
+          <p class="stat-note" data-i18n="st2_note">原本要拖进度条对齐起点与终点；现在 ⇧R，或一次 ⌘R。</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-num"><span>3</span><span class="arr" aria-hidden="true">→</span><span class="hl">1</span></p>
+          <p class="stat-label" data-i18n="st3_label">同时打开的软件数</p>
+          <p class="stat-note" data-i18n="st3_note">播放、写稿、查字共用一个窗口，文稿还在原处。</p>
+        </div>
+        <div class="stat reveal">
+          <p class="stat-num"><span class="hl">0</span></p>
+          <p class="stat-label" data-i18n="st4_label">手离开键盘的次数</p>
+          <p class="stat-note" data-i18n="st4_note">快捷条也能点，但每个动作都有键位；单键在打字时自动让位。</p>
+        </div>
+      </div>
+      <p class="stats-note" data-i18n="stats_note">以上是我们在该场景下的设计目标口径，不是第三方统计。</p>
+
+      <div class="esc-band reveal">
+        <div class="esc-key"><kbd>Esc</kbd></div>
+        <div class="esc-copy">
+          <h3 data-i18n="esc_h">Esc 一键退一层</h3>
+          <p data-i18n="esc_p">A–B 区间、单句循环、重复次数、跟读间隔、遮挡字幕、听写、视频独占——按一下退一层，不用回头找开关。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06 快捷键 ──────────────────────────────────────── -->
+  <section class="section" id="keys">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec6_eb">06 · 快捷键</span></p>
+        <h2 class="keys-h"><span data-i18n="keys_h_a">每个动作都有键，</span><span data-i18n="keys_h_b">手不用离开键盘</span></h2>
+        <p class="sec-sub" data-i18n="keys_sub">两套绑定：⌘ / ⌥ 组合在听写打字时依然生效；单键只在焦点不在文本框时生效。全部可在设置里改键。</p>
+      </div>
+
+      <div class="keys-panel reveal">
+        <div class="keys-head">
+          <h3 data-i18n="keys_g1">听写中始终可用</h3>
+          <span class="keys-tag" data-i18n="keys_tag1">⌘ / ⌥ 组合</span>
+        </div>
+        <div class="keys-grid">
+          <div class="krow"><span class="kbd"><kbd>⌘P</kbd></span><span class="kdesc" data-i18n="k_play">播放 / 暂停</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘R</kbd></span><span class="kdesc" data-i18n="k_replay">重播本句</span></div>
+          <div class="krow"><span class="kbd"><kbd>⇧⌘R</kbd></span><span class="kdesc" data-i18n="k_loop">单句循环开关</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘←</kbd><i>/</i><kbd>⌘→</kbd></span><span class="kdesc" data-i18n="k_prevnext">上一句 / 下一句</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘N</kbd></span><span class="kdesc" data-i18n="k_repeat">重复次数（N 次后前进）</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘G</kbd></span><span class="kdesc" data-i18n="k_gap">跟读留白开关</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘[</kbd><i>/</i><kbd>⌘]</kbd></span><span class="kdesc" data-i18n="k_markab">标记 A 点 / B 点</span></div>
+          <div class="krow"><span class="kbd"><kbd>Esc</kbd></span><span class="kdesc" data-i18n="k_clear_ab">取消 A–B / 退出当前模式</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘D</kbd></span><span class="kdesc" data-i18n="k_dict">进入 / 退出听写</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘↩</kbd></span><span class="kdesc" data-i18n="k_check">校验当前句</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘↩</kbd></span><span class="kdesc" data-i18n="k_skip">跳过这句</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥&gt;</kbd></span><span class="kdesc" data-i18n="k_lookup">音标 / 拼写查字</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥&lt;</kbd></span><span class="kdesc" data-i18n="k_wordbook">错词本</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘U</kbd></span><span class="kdesc" data-i18n="k_subs">显示 / 隐藏字幕</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘S</kbd></span><span class="kdesc" data-i18n="k_mask">遮罩硬字幕</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘[</kbd><i>/</i><kbd>⌥⌘]</kbd></span><span class="kdesc" data-i18n="k_maskresize">调整遮挡高度（5%–60%）</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘/</kbd></span><span class="kdesc" data-i18n="k_repair">逐帧去字幕（较慢、无糊边）</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘/</kbd></span><span class="kdesc" data-i18n="k_crop">裁剪去字幕（更快）</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥⌘L</kbd></span><span class="kdesc" data-i18n="k_layout">切换上下 / 左右布局</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌃⌘F</kbd></span><span class="kdesc" data-i18n="k_full">全屏</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘O</kbd><i>/</i><kbd>⇧⌘O</kbd></span><span class="kdesc" data-i18n="k_open">打开媒体 / 打开 .docx</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘S</kbd><i>/</i><kbd>⌘E</kbd></span><span class="kdesc" data-i18n="k_save">保存 .docx / 导出</span></div>
+        </div>
+      </div>
+
+      <div class="keys-panel reveal">
+        <div class="keys-head">
+          <h3 data-i18n="keys_g2">播放时单键</h3>
+          <span class="keys-tag" data-i18n="keys_tag2">焦点不在文本框</span>
+        </div>
+        <div class="keys-grid">
+          <div class="krow"><span class="kbd"><kbd>Space</kbd></span><span class="kdesc" data-i18n="kp_play">播放 / 暂停</span></div>
+          <div class="krow"><span class="kbd"><kbd>R</kbd></span><span class="kdesc" data-i18n="kp_replay">重播本句</span></div>
+          <div class="krow"><span class="kbd"><kbd>⇧R</kbd></span><span class="kdesc" data-i18n="kp_loop">单句循环</span></div>
+          <div class="krow"><span class="kbd"><kbd>⇧←</kbd><i>/</i><kbd>⇧→</kbd></span><span class="kdesc" data-i18n="kp_prevnext">上一句 / 下一句</span></div>
+          <div class="krow"><span class="kbd"><kbd>←</kbd><i>/</i><kbd>→</kbd></span><span class="kdesc" data-i18n="kp_seek">后退 / 前进 5 秒</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥←</kbd><i>/</i><kbd>⌥→</kbd></span><span class="kdesc" data-i18n="kp_nudge">微调 1 秒</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌘↑</kbd><i>/</i><kbd>⌘↓</kbd></span><span class="kdesc" data-i18n="kp_speed">加快 / 放慢语速</span></div>
+          <div class="krow"><span class="kbd"><kbd>↑</kbd><i>/</i><kbd>↓</kbd></span><span class="kdesc" data-i18n="kp_vol">音量</span></div>
+          <div class="krow"><span class="kbd"><kbd>A</kbd><i>/</i><kbd>B</kbd></span><span class="kdesc" data-i18n="kp_markab">标记 A 点 / B 点</span></div>
+          <div class="krow"><span class="kbd"><kbd>N</kbd></span><span class="kdesc" data-i18n="kp_repeat">重复次数</span></div>
+          <div class="krow"><span class="kbd"><kbd>G</kbd><i>/</i><kbd>⇧G</kbd></span><span class="kdesc" data-i18n="kp_gap">跟读间隔 / 设置间隔</span></div>
+          <div class="krow"><span class="kbd"><kbd>D</kbd></span><span class="kdesc" data-i18n="kp_dict">进入 / 退出听写</span></div>
+          <div class="krow"><span class="kbd"><kbd>V</kbd><i>/</i><kbd>M</kbd><i>/</i><kbd>F</kbd></span><span class="kdesc" data-i18n="kp_svfm">字幕 / 静音 / 全屏</span></div>
+          <div class="krow"><span class="kbd"><kbd>⌥L</kbd></span><span class="kdesc" data-i18n="kp_layout">切换布局</span></div>
+          <div class="krow"><span class="kbd"><kbd>?</kbd></span><span class="kdesc" data-i18n="kp_help">快捷键帮助</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 07 下载 ────────────────────────────────────────── -->
+  <section class="section section-dl" id="download">
+    <div class="wrap">
+      <div class="dl-panel reveal">
+        <div class="dl-copy">
+          <p class="eyebrow"><span class="eb-line" aria-hidden="true"></span><span data-i18n="sec7_eb">07 · 下载</span></p>
+          <h2 data-i18n="dl_h">下载 SentenceEcho</h2>
+          <p class="dl-sub" data-i18n="dl_p">免费。macOS 13 或更新，Apple 芯片。安装包未做 Apple 签名——第一次打开请右键 →「打开」。</p>
+          <div class="cta">
+            <a class="btn btn-primary btn-lg" id="dlbtn" href="SentenceEcho.dmg" download>
+              <svg class="ico" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+              <span data-i18n="dl_btn">下载 .dmg（约 160 MB）</span>
+            </a>
+          </div>
+          <ul class="dl-chips">
+            <li data-i18n="dl_c1">macOS 13+</li>
+            <li data-i18n="dl_c2">Apple 芯片</li>
+            <li data-i18n="dl_c3">约 160 MB</li>
+            <li data-i18n="dl_c4">免费</li>
+          </ul>
+          <p class="dl-note" data-i18n="dl_note">识别在本机完成（whisper.cpp），素材与文稿不上传。识别引擎与多语种模型已内置，装好即用，无需另外安装任何依赖。</p>
+        </div>
+        <div class="dl-art" aria-hidden="true">
+          <img src="assets/sentenceecho-lockup-vertical-vivid-512.png" alt="" width="512" height="512">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <img class="foot-logo" src="assets/sentenceecho-lockup-vivid-512.png" alt="SentenceEcho" width="512" height="92">
+      <nav class="foot-nav" aria-label="页脚导航" data-i18n-aria="foot_nav_label">
+        <a href="#pains" data-i18n="nav_pains">痛点</a>
+        <a href="#modules" data-i18n="nav_modules">模块</a>
+        <a href="#compare" data-i18n="nav_compare">对比</a>
+        <a href="#pipeline" data-i18n="nav_pipeline">流水线</a>
+        <a href="#keys" data-i18n="nav_keys">快捷键</a>
+        <a href="#download" data-i18n="nav_download">下载</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Yellowfir Group Limited</p>
+      <p data-i18n="foot_tag">SentenceEcho 是 Yellowfir Group Limited 的产品。</p>
+      <a href="#top" class="foot-top-link" data-i18n="foot_top">回到顶部 ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
