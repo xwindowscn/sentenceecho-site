@@ -25,6 +25,7 @@
       nav_pipeline: "流水线",
       nav_keys: "快捷键",
       nav_pricing: "价格",
+      foot_terms: "服务条款", foot_refund: "退款政策", foot_privacy: "隐私政策",
       nav_download: "下载",
 
       hero_eb: "macOS 英语听写 · 本地运行",
@@ -352,6 +353,7 @@
       nav_pipeline: "Pipeline",
       nav_keys: "Shortcuts",
       nav_pricing: "Pricing",
+      foot_terms: "Terms", foot_refund: "Refund", foot_privacy: "Privacy",
       nav_download: "Download",
 
       hero_eb: "macOS dictation · runs locally",
