@@ -92,7 +92,7 @@
       m1_c2: "视频 mp4 / mkv / mov / m4v / webm / avi 等",
       m1_c3: "音频 mp3 / m4a / wav / flac / aac / ogg 等",
       m1_c4: "字幕 srt / ass / vtt，外挂或内嵌",
-      m1_c5: "0.5×–2.0× 不变调",
+      m1_c5: "0.5×–3.0× 不变调",
       m1_c6: "上下 / 左右布局；纯音频无画面",
 
       m2_t: "复读引擎",
@@ -388,7 +388,7 @@
       m1_c2: "Video: mp4 / mkv / mov / m4v / webm / avi and more",
       m1_c3: "Audio: mp3 / m4a / wav / flac / aac / ogg and more",
       m1_c4: "Subtitles: srt / ass / vtt, external or embedded",
-      m1_c5: "0.5×–2.0× without pitch shift",
+      m1_c5: "0.5×–3.0× without pitch shift",
       m1_c6: "Stacked or side by side; audio-only shows no video",
 
       m2_t: "Repeat engine",
