@@ -331,7 +331,7 @@
       dl_p: "免费。macOS 13 或更新，Apple 芯片。安装包未做 Apple 签名——第一次打开请右键 →「打开」。",
       dl_btn: "下载 .dmg（约 160 MB）",
       dl_c1: "macOS 13+", dl_c2: "Apple 芯片", dl_c3: "约 160 MB", dl_c4: "免费",
-      dl_note: "识别在本机完成（whisper.cpp），素材与文稿不上传。识别引擎与多语种模型已内置，装好即用，无需另外安装任何依赖。",
+      dl_note: "识别在本机完成（离线运行，基于开源 whisper 模型），素材与文稿不上传。识别引擎与多语种模型已内置，装好即用，无需另外安装任何依赖。",
 
       foot_nav_label: "页脚导航",
       foot_tag: "SentenceEcho 是 Yellowfir Group Limited 的产品。",
@@ -659,7 +659,7 @@
       dl_p: "Free. macOS 13 or later, Apple silicon. The build is unsigned — the first time, right-click → Open.",
       dl_btn: "Download .dmg (~160 MB)",
       dl_c1: "macOS 13+", dl_c2: "Apple silicon", dl_c3: "~160 MB", dl_c4: "Free",
-      dl_note: "Recognition runs locally (whisper.cpp); media and manuscripts are never uploaded. Subtitle generation needs the recognition engine and English model installed locally (~160 MB).",
+      dl_note: "Recognition runs locally (offline, open-source whisper model); media and manuscripts are never uploaded. Subtitle generation needs the recognition engine and English model installed locally (~160 MB).",
 
       foot_nav_label: "Footer navigation",
       foot_tag: "SentenceEcho is a product of Yellowfir Group Limited.",
