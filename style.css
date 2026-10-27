@@ -18,7 +18,7 @@
   --ink: #08111a;
   --max: 1180px;
   --gutter: clamp(20px, 4.2vw, 40px);
-  --sec-y: clamp(48px, 6vw, 84px);
+  --sec-y: clamp(30px, 3.8vw, 56px);
   --radius: 18px;
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
           "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
@@ -307,7 +307,7 @@ h1, h2, h3, h4, p, dl, dd, figure { margin: 0; }
   padding: var(--sec-y) 0;
   border-top: 1px solid var(--line-soft);
 }
-.sec-head { max-width: 800px; margin-bottom: clamp(22px, 3vw, 34px); }
+.sec-head { max-width: 800px; margin-bottom: clamp(14px, 2vw, 22px); }
 .sec-head h2,
 .spot-lead h2,
 .dl-copy h2 {
@@ -712,7 +712,7 @@ kbd {
 .kdesc { font-size: 12.6px; line-height: 1.5; color: var(--muted); padding-top: 2px; }
 
 /* ── 下载 ─────────────────────────────────────────────── */
-.section-dl { padding-bottom: clamp(44px, 5vw, 72px); }
+.section-dl { padding-bottom: clamp(32px, 4vw, 52px); }
 .dl-panel {
   position: relative;
   display: grid;
