@@ -24,6 +24,7 @@
       nav_compare: "对比",
       nav_pipeline: "流水线",
       nav_keys: "快捷键",
+      nav_pricing: "价格",
       nav_download: "下载",
 
       hero_eb: "macOS 英语听写 · 本地运行",
@@ -348,6 +349,7 @@
       nav_compare: "Compare",
       nav_pipeline: "Pipeline",
       nav_keys: "Shortcuts",
+      nav_pricing: "Pricing",
       nav_download: "Download",
 
       hero_eb: "macOS dictation · runs locally",
