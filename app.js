@@ -27,8 +27,8 @@
       nav_download: "下载",
 
       hero_eb: "macOS 英语听写 · 本地运行",
-      hero_h1_1: "把听到的英语，",
-      hero_h1_2: "一句一句写下来。",
+      hero_h1_1: "把听到的话，",
+      hero_h1_2: "一句一句听写下来。",
       hero_tag: "最强大的复读、学习、播放软件",
       hero_lead: "播放器、Word 式文稿、逐句校验、音标查字，都在同一个窗口。听到一句就写一句：写对了自动往下走，写错了就停在这句反复听。",
       cta_dl: "下载 macOS 版",
@@ -328,8 +328,8 @@
       nav_download: "Download",
 
       hero_eb: "macOS dictation · runs locally",
-      hero_h1_1: "Hear English.",
-      hero_h1_2: "Write every sentence.",
+      hero_h1_1: "Write down what you hear —",
+      hero_h1_2: "one sentence at a time.",
       hero_tag: "The most powerful repeat, study and play app",
       hero_lead: "Player, Word-style manuscript, sentence-by-sentence checking and IPA lookup in one window. Write each sentence as you hear it: right moves you on, wrong holds you there until it is fixed.",
       cta_dl: "Download for macOS",
