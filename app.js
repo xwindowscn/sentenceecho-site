@@ -7,7 +7,7 @@
   "use strict";
 
   // 下载地址：发布时改成 CDN / Releases 直链即可（只需改这一行）
-  var DOWNLOAD_URL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/latest/download/SentenceEcho-Voice-0.1.0.dmg";
+  var DOWNLOAD_URL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/download/v0.1.0-app/SentenceEcho-0.1.0.dmg";
 
   var I18N = {
     zh: {
