@@ -814,6 +814,7 @@ kbd {
 }
 .dl-alt a { color: #7fd4fb; text-decoration: none; border-bottom: 1px dashed rgba(127,212,251,.5); }
 .dl-alt a:hover { color: #a9e6ff; }
+.dl-sep { color: #4a6478; margin: 0 8px; }
 
 .dl-steps {
   max-width: 56ch;
