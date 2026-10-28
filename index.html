@@ -895,11 +895,11 @@
             </a>
           </div>
           <ol class="dl-steps">
-            <li data-i18n="dl_s1">下载后打开 .dmg，把 SentenceEcho 拖进「应用程序」。</li>
-            <li data-i18n="dl_s2">首次打开会提示「无法验证开发者」：打开「系统设置 → 隐私与安全性」，向下滚到「安全性」，点「仍要打开」并验证密码/指纹。</li>
-            <li data-i18n="dl_s3">若仍提示「已损坏」：打开「终端」，粘贴执行下面这行命令，再打开一次应用。</li>
+            <li data-i18n="dl_s1">下载后打开 .dmg，双击 SentenceEcho。</li>
+            <li data-i18n="dl_s2">被系统拦下时：打开「系统设置 → 隐私与安全性」，向下滚到「安全性」，点「仍要打开」并验证密码/指纹（新版 macOS 已取消「右键 → 打开」这个捷径）。</li>
+            <li data-i18n="dl_s3">应用启动后会问你「要装进应用程序吗」，点「安装并打开」——它自己复制、自己解除「来自网络」标记，之后双击就能用，不用敲任何命令。</li>
+            <li data-i18n="dl_s4">只有被报「已损坏」时：双击安装包里的「安装 SentenceEcho.command」，它做的和上面同样是复制 + 解除标记。</li>
           </ol>
-          <pre class="dl-cmd"><code>xattr -dr com.apple.quarantine /Applications/SentenceEcho.app</code></pre>
           <ul class="dl-chips">
             <li data-i18n="dl_c1">macOS 13+</li>
             <li data-i18n="dl_c2">Apple 芯片</li>
@@ -941,6 +941,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=20261028b"></script>
+<script src="app.js?v=20261028c"></script>
 </body>
 </html>
