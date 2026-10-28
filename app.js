@@ -7,7 +7,9 @@
   "use strict";
 
   // 下载地址：发布时改成 CDN / Releases 直链即可（只需改这一行）
-  var DOWNLOAD_URL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/latest/download/SentenceEcho.dmg";
+  var DOWNLOAD_URL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/latest/download/SentenceEcho-AppleSilicon.dmg";
+  // Intel 版入口（Intel 芯片 Mac）
+  var DOWNLOAD_URL_INTEL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/latest/download/SentenceEcho-Intel.dmg";
 
   var I18N = {
     zh: {
@@ -336,6 +338,7 @@
       dl_s3: "应用启动后会问你「要装进应用程序吗」，点「安装并打开」——它自己复制、自己解除「来自网络」标记，之后双击就能用，不用敲任何命令。",
       dl_s4: "只有被报「已损坏」时：双击安装包里的「安装 SentenceEcho.command」，它做的和上面同样是复制 + 解除标记。",
       dl_btn: "下载 .dmg（约 160 MB）",
+      dl_intel: "Intel 芯片 Mac？下载 Intel 版",
       dl_c1: "macOS 13+", dl_c2: "Apple 芯片", dl_c3: "约 160 MB", dl_c4: "1 天免费试用",
       dl_note: "识别在本机完成（离线运行，基于开源 whisper 模型），素材与文稿不上传。识别引擎与多语种模型已内置，装好即用，无需另外安装任何依赖。",
 
@@ -669,6 +672,7 @@
       dl_s3: "When the app asks whether to install itself into Applications, click \"Install and open\" — it copies itself and clears the browser's \"downloaded from the internet\" flag; from then on double-click just works.",
       dl_s4: "Only if macOS says the app is damaged: double-click \"安装 SentenceEcho.command\" in the disk image. It does the same copy + flag removal.",
       dl_btn: "Download .dmg (~160 MB)",
+      dl_intel: "Intel Mac? Get the Intel build",
       dl_c1: "macOS 13+", dl_c2: "Apple silicon", dl_c3: "~160 MB", dl_c4: "1-day free trial",
       dl_note: "Recognition runs locally (offline, open-source whisper model); media and manuscripts are never uploaded. Subtitle generation needs the recognition engine and English model installed locally (~160 MB).",
 
