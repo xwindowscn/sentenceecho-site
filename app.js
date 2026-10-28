@@ -7,7 +7,7 @@
   "use strict";
 
   // 下载地址：发布时改成 CDN / Releases 直链即可（只需改这一行）
-  var DOWNLOAD_URL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/download/v0.1.0-app/SentenceEcho-0.1.0.dmg";
+  var DOWNLOAD_URL = "https://github.com/xwindowscn/sentenceecho-downloads/releases/latest/download/SentenceEcho.dmg";
 
   var I18N = {
     zh: {
@@ -330,7 +330,10 @@
 
       sec7_eb: "07 · 下载",
       dl_h: "下载 SentenceEcho",
-      dl_p: "免费。macOS 13 或更新，Apple 芯片。安装包未做 Apple 签名——第一次打开请右键 →「打开」。",
+      dl_p: "免费。macOS 13 或更新，Apple 芯片。安装包未做 Apple 公证——第一次打开需按下方三步放行（新版 macOS 已取消「右键 → 打开」这个捷径）。",
+      dl_s1: "下载后打开 .dmg，把 SentenceEcho 拖进「应用程序」。",
+      dl_s2: "首次打开会提示「无法验证开发者」：打开「系统设置 → 隐私与安全性」，向下滚到「安全性」，点「仍要打开」并验证密码/指纹。",
+      dl_s3: "若仍提示「已损坏」：打开「终端」，粘贴执行该命令后重开一次。",
       dl_btn: "下载 .dmg（约 160 MB）",
       dl_c1: "macOS 13+", dl_c2: "Apple 芯片", dl_c3: "约 160 MB", dl_c4: "1 天免费试用",
       dl_note: "识别在本机完成（离线运行，基于开源 whisper 模型），素材与文稿不上传。识别引擎与多语种模型已内置，装好即用，无需另外安装任何依赖。",
@@ -659,7 +662,10 @@
 
       sec7_eb: "07 · Download",
       dl_h: "Download SentenceEcho",
-      dl_p: "Free. macOS 13 or later, Apple silicon. The build is unsigned — the first time, right-click → Open.",
+      dl_p: "Free. macOS 13 or later, Apple silicon. The build is not notarized — allow it once using the three steps below (recent macOS no longer accepts right-click → Open).",
+      dl_s1: "Open the .dmg and drag SentenceEcho into Applications.",
+      dl_s2: "On first launch macOS says it cannot verify the developer: open System Settings → Privacy & Security, scroll to Security, click \"Open Anyway\" and authenticate.",
+      dl_s3: "If it still says the app is damaged, paste this into Terminal and open the app again.",
       dl_btn: "Download .dmg (~160 MB)",
       dl_c1: "macOS 13+", dl_c2: "Apple silicon", dl_c3: "~160 MB", dl_c4: "1-day free trial",
       dl_note: "Recognition runs locally (offline, open-source whisper model); media and manuscripts are never uploaded. Subtitle generation needs the recognition engine and English model installed locally (~160 MB).",
