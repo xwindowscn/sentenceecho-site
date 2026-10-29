@@ -35,9 +35,9 @@
       hero_h1_2: "一句一句听写下来。",
       hero_tag: "功能最全面、极致效率的语言复读、学习、播放软件",
       hero_lead: "功能最全面的语言听写、复读学习工具。播放器、Word 式文稿、逐句校验、音标查字，都在同一个窗口。听到一句就写一句：写对了自动往下走，写错了就停在这句反复听。",
-      cta_dl: "下载 macOS 版",
+      cta_dl: "下载（macOS / Windows）",
       cta_how: "看它怎么工作",
-      hero_meta: "付费软件 · 1 天免费试用 · macOS 13+ · Apple 芯片 · 素材不出本机",
+      hero_meta: "付费软件 · 1 天免费试用 · macOS 13+（Apple 芯片 / Intel）与 Windows x64 · 素材不出本机",
       facts_label: "产品要点",
 
       fact1_k: "播放", fact1_v: "通用播放器，视频和音频",
@@ -372,9 +372,9 @@
       hero_h1_2: "one sentence at a time.",
       hero_tag: "The most comprehensive, efficiency-first app for language repeat, study and play",
       hero_lead: "The most comprehensive dictation and repeat tool for language learning. Player, Word-style manuscript, sentence-by-sentence checking and IPA lookup in one window. Write each sentence as you hear it: right moves you on, wrong holds you there until it is fixed.",
-      cta_dl: "Download for macOS",
+      cta_dl: "Download (macOS / Windows)",
       cta_how: "See how it works",
-      hero_meta: "Paid software · 1-day free trial · macOS 13+ · Apple silicon · media never leaves your Mac",
+      hero_meta: "Paid software · 1-day free trial · macOS 13+ (Apple silicon / Intel) and Windows x64 · media never leaves your Mac",
       facts_label: "Product facts",
 
       fact1_k: "Play", fact1_v: "A general player for video and audio",
