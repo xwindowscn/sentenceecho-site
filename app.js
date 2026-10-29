@@ -288,6 +288,7 @@
       keys_h_a: "每个动作都有键，",
       keys_h_b: "手不用离开键盘",
       keys_sub: "两套绑定：⌘ / ⌥ 组合在听写打字时依然生效；单键只在焦点不在文本框时生效。全部可在设置里改键。",
+      keys_mem: "快捷键桌面显化，不用记忆——顶部快捷条与视频左侧状态栏实时列出当前可用的键，用到哪个看一眼就行。",
       keys_g1: "听写中始终可用", keys_tag1: "⌘ / ⌥ 组合",
       keys_g2: "播放时单键", keys_tag2: "焦点不在文本框",
 
@@ -623,6 +624,7 @@
       keys_h_a: "Every action has a key.",
       keys_h_b: "Your hands stay on the keys.",
       keys_sub: "Two binding sets: ⌘ / ⌥ combos stay live while you type; bare keys apply only when focus is outside the text box. Every binding can be changed in settings.",
+      keys_mem: "Shortcuts are shown right on screen — the top quick bar and the left status strip list the keys in effect, so nothing has to be memorised.",
       keys_g1: "Always available during dictation", keys_tag1: "⌘ / ⌥ combos",
       keys_g2: "Bare keys while playing", keys_tag2: "Focus outside the text box",
 
