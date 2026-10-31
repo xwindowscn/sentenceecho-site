@@ -118,6 +118,8 @@
       m3_c4: "一句一段",
       m3_c5: "自动草稿",
       m3_c6: "同名文稿配对",
+      m3_c7: "⌘ + 点单词：跳到那句",
+      m3_c8: "英文排版自动规范（标点空格 · 句号 · 专名大写 · 段首缩进）",
 
       m4_t: "跟随校验",
       m4_solve: "写完不知道对错，错了也没人逼你改。",
@@ -314,7 +316,8 @@
       k_layout: "切换上下 / 左右布局",
       k_full: "全屏",
       k_open: "打开媒体 / 打开 .docx",
-      k_save: "保存 .docx / 导出",
+      k_save: "保存 .docx / 另存为",
+      k_seek: "播放器跳到这个词所在的那一句",
 
       kp_play: "播放 / 暂停",
       kp_replay: "重播本句",
@@ -455,6 +458,8 @@
       m3_c4: "One sentence per paragraph",
       m3_c5: "Autosaved drafts",
       m3_c6: "Same-name pairing",
+      m3_c7: "⌘ + click a word: jump to that line",
+      m3_c8: "Auto English typography (spacing · periods · proper nouns · indent)",
 
       m4_t: "Follow-along check",
       m4_solve: "You finish with no idea whether it is right, and nothing forces a correction.",
@@ -651,7 +656,8 @@
       k_layout: "Switch stacked / side-by-side",
       k_full: "Full screen",
       k_open: "Open media / open .docx",
-      k_save: "Save .docx / export",
+      k_save: "Save .docx / Save as",
+      k_seek: "Jump playback to the sentence containing that word",
 
       kp_play: "Play / pause",
       kp_replay: "Replay this sentence",
